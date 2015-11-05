@@ -1,7 +1,7 @@
 <ion-view mz-screen view-title="{{ title | translate }}">
     <div class="bar bar-header bar-stable service-header">
 	  <h1 class="title">Ticket</h1>
-	  <button class="button icon ion-trash-a">
+	  <button class="button icon ion-trash-a button-clear" ng-show="ticketGiven">
 	</div>
     <ion-content scroll="false" class="has-header ticketcontent">
 		<div class="card">
@@ -16,8 +16,28 @@
 				<img src="http://i325.photobucket.com/albums/k362/gbsojo/Componente-03_zpsyp2rvhc1.png" ng-class="ticketGiven ? 'active' : 'inactive'">
 			</div>
 		</div>
-		<p class="instruction" ng-hide="ticketGiven">Hale para obtener un ticket</p>
-		<!-- <div class="card">
+		<p class="instruction" ng-hide="ticketGiven">{{'ticket_instruction' | translate}}</p>
+		<!-- <div>
+			<div class="timer-group">
+			  <div class="timer hour">
+			    <div class="hand"><span></span></div>
+			    <div class="hand"><span></span></div>
+			  </div>
+			  <div class="timer minute">
+			    <div class="hand"><span></span></div>
+			    <div class="hand"><span></span></div>
+			  </div>
+			  <div class="timer second">
+			    <div class="hand"><span></span></div>
+			    <div class="hand"><span></span></div>
+			  </div>
+			  <div class="face">
+			    <h2>A CSS Chronograph</h2>
+			    <p id="lazy">00:00:00</p>  
+			  </div>
+			</div>
+		</div> -->
+		<div class="bar">
 		  <div class="item item-text-wrap bar-footer">
 		    Notificarme al ser 
 		    <button class="button button-stable">
@@ -33,6 +53,6 @@
 			  9°
 			</button>
 		  </div>
-		</div> -->
+		</div>
     </ion-content>
 </ion-view>
