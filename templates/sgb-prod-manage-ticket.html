@@ -1,0 +1,38 @@
+<ion-view mz-screen view-title="{{ title | translate }}">
+    <div class="bar bar-header bar-stable service-header">
+	  <h1 class="title">Ticket</h1>
+	  <button class="button icon ion-trash-a">
+	</div>
+    <ion-content scroll="false" class="has-header ticketcontent">
+		<div class="card">
+		  <div class="item item-text-wrap">
+		    Service (Distance m)
+		  </div>
+		</div>
+		<div class="ticket-holder">
+			<div class="ticket-innerholder">
+			</div>
+			<div id="eventPlaceholder" class="ticket">
+				<img src="http://i325.photobucket.com/albums/k362/gbsojo/Componente-03_zpsyp2rvhc1.png" ng-class="ticketGiven ? 'active' : 'inactive'">
+			</div>
+		</div>
+		<p class="instruction" ng-hide="ticketGiven">Hale para obtener un ticket</p>
+		<!-- <div class="card">
+		  <div class="item item-text-wrap bar-footer">
+		    Notificarme al ser 
+		    <button class="button button-stable">
+			  /
+			</button>
+			<button class="button button-stable">
+			  3°
+			</button>
+			<button class="button button-stable">
+			  6°
+			</button>
+			<button class="button button-stable">
+			  9°
+			</button>
+		  </div>
+		</div> -->
+    </ion-content>
+</ion-view>

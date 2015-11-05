@@ -1,0 +1,82 @@
+//Define any sass variables and styles here.
+//They may be overridden by the application using the screen.
+
+$myColor: #00dda0;
+$serviceBorderColor: #3CCAFF;
+$ticketHolderColor: #091866;
+$ticketInnerHolderColor: #FFF;
+$ticketColor: #000;
+$circle-size: 120px;
+$circle-background: #d6dadc;
+$circle-color: #97a71d;
+$inset-size: 90px;
+$inset-color: #fbfbfb;
+$transition-length: 1s;
+$shadow: 6px 6px 10px rgba(0,0,0,0.2);
+$backgroundColor: #E3E2D8;
+
+.customHeader {
+  color: $myColor;
+}
+
+.service-header {
+	border-bottom: solid 2px $serviceBorderColor !important;
+}
+
+.ticket-holder {
+	height: 7vh;
+	width: 80vw;
+	background-color: $ticketHolderColor;
+	border-radius: 8px;
+	margin: 8em auto 0 auto;
+	padding-top: 8px;
+}
+
+.ticket-innerholder {
+	height: 13%;
+	width: 80%;
+	background-color: $ticketInnerHolderColor;
+	margin: 0 auto;
+	border-radius: 2px;
+}
+
+.ticket {
+	width: 65%;
+	height: 100%;
+	margin: 0 auto;
+	height: 30em;
+	overflow: hidden;
+}
+
+.ticket img {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.active {
+	top: 0;
+	transition:All 1s linear;
+	transform: translate(0px,0em);
+}
+
+.inactive {
+	top: -7.5em;
+}
+
+
+
+.instruction{
+	margin:  4.5em auto;
+	text-align: center;
+	font-size: 20px;
+}
+
+.button {
+	width: 10%;
+	height: 10%;
+}
+
+.ticketcontent {
+	background-color: $backgroundColor !important;
+}
