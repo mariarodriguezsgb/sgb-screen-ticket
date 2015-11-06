@@ -2,19 +2,55 @@
 'use strict';
 
 angular.module('sgb-prod-manage-ticket', ['megazord'])
-    .controller('sgb-prod-manage-ticket-controller', ['$scope', '_router', '_screen', '_screenParams', '_data', '$ionicGesture', '$window', '$interval', function ($scope, _router, _screen, _screenParams, _data, $ionicGesture, $window, $interval) {
+    .controller('sgb-prod-manage-ticket-controller', ['$scope', '_router', '_screen', '_screenParams', '_data', '$ionicGesture', '$window', '$interval', '$ionicPopup', '$timeout', '$filter', function ($scope, _router, _screen, _screenParams, _data, $ionicGesture, $window, $interval, $ionicPopup, $timeout, $filter) {
         _screen.initialize($scope, _screenParams);
 
         $scope.data = _data;
-
-        $scope.ticketGiven=false;
-
+        $scope.ticketRequested=false;
+        $scope.ticketGenerated = false;
+        $scope.ticket = -1;
+        $scope.selection = $scope.data.notification;
+        
         var element = angular.element(document.getElementById('eventPlaceholder'));
         $ionicGesture.on('dragdown', function (event) {
         	$scope.$apply(function () {
-        		$scope.ticketGiven=true;
+        		$scope.ticketRequested=true;
+        		$scope.requestTicket();
         	});
         }, element);
+
+        $scope.changeNotification = function (value) {
+        	$scope.ticket = value;
+        }
+
+        $scope.requestTicket = function () {
+        	$scope.ticket = 255;
+        	$timeout(function(){
+		    	$scope.ticketGenerated = true;
+		    	$scope.ticketRequested = false;
+		    }, 1000);
+        }
+
+        $scope.deleteTicket = function () {
+        	$scope.ticketRequested = false;
+        	$scope.ticketGenerated = false;
+        	$scope.ticket= -1;
+        }
+
+		$scope.showConfirm = function() {
+	      var confirmPopupPromise = $ionicPopup.confirm({
+	        templateUrl: 'confirmation.html',
+	        cancelText: $filter('translate')('negative'),
+	        cancelType: 'button-light',
+	        okText: $filter('translate')('positive'),
+	        okType: 'button-balanced'
+	      });
+	      
+	      confirmPopupPromise.then(function(res) {
+	        if (res)
+	          $scope.deleteTicket();
+	      });
+	    };
 
         //Probando el timer
 

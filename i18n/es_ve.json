@@ -1,3 +1,8 @@
 {
-  "ticket_instruction": "Hale para obtener un ticket"
+  "ticket_instruction": "Hale para obtener un ticket",
+  "ticket_cancelation":"Cancelación de Ticket",
+  "cancelticket_confirm" : "¿Está seguro que desea cancelar el ticket?",
+  "positive" : "Yes",
+  "negative" : "No",
+  "notifyme":"Notificarme al ser"
 }

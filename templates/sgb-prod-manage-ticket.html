@@ -1,7 +1,7 @@
 <ion-view mz-screen view-title="{{ title | translate }}">
     <div class="bar bar-header bar-stable service-header">
 	  <h1 class="title">Ticket</h1>
-	  <button class="button icon ion-trash-a button-clear" ng-show="ticketGiven">
+	  <button class="button icon ion-trash-a button-clear" ng-click="showConfirm()" ng-show="ticketGenerated">
 	</div>
     <ion-content scroll="false" class="has-header ticketcontent">
 		<div class="card">
@@ -13,10 +13,14 @@
 			<div class="ticket-innerholder">
 			</div>
 			<div id="eventPlaceholder" class="ticket">
-				<img src="http://i325.photobucket.com/albums/k362/gbsojo/Componente-03_zpsyp2rvhc1.png" ng-class="ticketGiven ? 'active' : 'inactive'">
+				<img src="http://i325.photobucket.com/albums/k362/gbsojo/Componente-03_zpsyp2rvhc1.png" ng-class="ticketRequested || ticketGenerated ? 'active' : 'inactive'">
+				<ion-spinner icon="spiral" ng-show="ticketRequested" ng-class="{'loading': ticketRequested}"></ion-spinner>
+				<p class="ticket-title" ng-show="ticketGenerated">Su turno</p>
+				<h1 class="ticket-number" ng-show="ticketGenerated">{{ticket}}</h1>
 			</div>
+
 		</div>
-		<p class="instruction" ng-hide="ticketGiven">{{'ticket_instruction' | translate}}</p>
+		<p class="instruction" ng-hide="ticketRequested || ticketGenerated">{{'ticket_instruction' | translate}}</p>
 		<!-- <div>
 			<div class="timer-group">
 			  <div class="timer hour">
@@ -37,22 +41,26 @@
 			  </div>
 			</div>
 		</div> -->
-		<div class="bar">
-		  <div class="item item-text-wrap bar-footer">
-		    Notificarme al ser 
-		    <button class="button button-stable">
-			  /
-			</button>
-			<button class="button button-stable">
-			  3°
-			</button>
-			<button class="button button-stable">
-			  6°
-			</button>
-			<button class="button button-stable">
-			  9°
-			</button>
-		  </div>
+		<div class="card optionscard">
+			<p class="notification">{{'notifyme' | translate}}</p>
+			<div class="item item-text-wrap options">
+			    <button class="button button-stable">
+				  /
+				</button>
+				<button class="button button-stable" ng-class="{'selected': selection == 3}" ng-click="changeNotification(3)">
+				  3°
+				</button>
+				<button class="button button-stable" ng-class="{'selected': selection == 6}" ng-click="changeNotification(6)">
+				  6°
+				</button>
+				<button class="button button-stable" ng-class="{'selected': selection == 9}" ng-click="changeNotification(9)">
+				  9°
+				</button>
+			</div>
 		</div>
     </ion-content>
+    <script id="confirmation.html" type="text/ng-template">
+    	<h3>{{'ticket_cancelation' | translate}}</h3>
+    	<p>{{'cancelticket_confirm' | translate }}</p>
+    </script>
 </ion-view>
